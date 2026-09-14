@@ -1,0 +1,2786 @@
+{
+  "scenario_id": "SCN-NORMAL",
+  "name": "Corridor Normal Operations",
+  "description": "Balanced maintenance demand with ample scheduled traffic windows and minimal section conflict.",
+  "horizon_hours": 168,
+  "is_synthetic": true,
+  "assets": [
+    {
+      "asset_id": "AST-ENG-SEC-ALD-CNB-UP-01",
+      "asset_type": "Track_Segment",
+      "department": "Engineering",
+      "section_id": "SEC-ALD-CNB-UP",
+      "criticality": 4.0
+    },
+    {
+      "asset_id": "AST-ENG-SEC-ALD-CNB-UP-02",
+      "asset_type": "Ballast_Bed",
+      "department": "Engineering",
+      "section_id": "SEC-ALD-CNB-UP",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-ENG-SEC-ALD-CNB-UP-03",
+      "asset_type": "Turnout_Switch",
+      "department": "Engineering",
+      "section_id": "SEC-ALD-CNB-UP",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-TRD-SEC-ALD-CNB-UP-04",
+      "asset_type": "OHE_Catenary",
+      "department": "TRD",
+      "section_id": "SEC-ALD-CNB-UP",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-TRD-SEC-ALD-CNB-UP-05",
+      "asset_type": "Traction_Substation_Bay",
+      "department": "TRD",
+      "section_id": "SEC-ALD-CNB-UP",
+      "criticality": 4.5
+    },
+    {
+      "asset_id": "AST-TRD-SEC-ALD-CNB-UP-06",
+      "asset_type": "OHE_Isolator",
+      "department": "TRD",
+      "section_id": "SEC-ALD-CNB-UP",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-S&T-SEC-ALD-CNB-UP-07",
+      "asset_type": "Point_Machine",
+      "department": "S&T",
+      "section_id": "SEC-ALD-CNB-UP",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-S&T-SEC-ALD-CNB-UP-08",
+      "asset_type": "Track_Circuit",
+      "department": "S&T",
+      "section_id": "SEC-ALD-CNB-UP",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-S&T-SEC-ALD-CNB-UP-09",
+      "asset_type": "Electronic_Interlocking",
+      "department": "S&T",
+      "section_id": "SEC-ALD-CNB-UP",
+      "criticality": 4.0
+    },
+    {
+      "asset_id": "AST-ENG-SEC-ALD-CNB-DN-01",
+      "asset_type": "Track_Segment",
+      "department": "Engineering",
+      "section_id": "SEC-ALD-CNB-DN",
+      "criticality": 4.0
+    },
+    {
+      "asset_id": "AST-ENG-SEC-ALD-CNB-DN-02",
+      "asset_type": "Ballast_Bed",
+      "department": "Engineering",
+      "section_id": "SEC-ALD-CNB-DN",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-ENG-SEC-ALD-CNB-DN-03",
+      "asset_type": "Turnout_Switch",
+      "department": "Engineering",
+      "section_id": "SEC-ALD-CNB-DN",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-TRD-SEC-ALD-CNB-DN-04",
+      "asset_type": "OHE_Catenary",
+      "department": "TRD",
+      "section_id": "SEC-ALD-CNB-DN",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-TRD-SEC-ALD-CNB-DN-05",
+      "asset_type": "Traction_Substation_Bay",
+      "department": "TRD",
+      "section_id": "SEC-ALD-CNB-DN",
+      "criticality": 4.5
+    },
+    {
+      "asset_id": "AST-TRD-SEC-ALD-CNB-DN-06",
+      "asset_type": "OHE_Isolator",
+      "department": "TRD",
+      "section_id": "SEC-ALD-CNB-DN",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-S&T-SEC-ALD-CNB-DN-07",
+      "asset_type": "Point_Machine",
+      "department": "S&T",
+      "section_id": "SEC-ALD-CNB-DN",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-S&T-SEC-ALD-CNB-DN-08",
+      "asset_type": "Track_Circuit",
+      "department": "S&T",
+      "section_id": "SEC-ALD-CNB-DN",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-S&T-SEC-ALD-CNB-DN-09",
+      "asset_type": "Electronic_Interlocking",
+      "department": "S&T",
+      "section_id": "SEC-ALD-CNB-DN",
+      "criticality": 4.0
+    },
+    {
+      "asset_id": "AST-ENG-SEC-CNB-ETW-UP-01",
+      "asset_type": "Track_Segment",
+      "department": "Engineering",
+      "section_id": "SEC-CNB-ETW-UP",
+      "criticality": 4.0
+    },
+    {
+      "asset_id": "AST-ENG-SEC-CNB-ETW-UP-02",
+      "asset_type": "Ballast_Bed",
+      "department": "Engineering",
+      "section_id": "SEC-CNB-ETW-UP",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-ENG-SEC-CNB-ETW-UP-03",
+      "asset_type": "Turnout_Switch",
+      "department": "Engineering",
+      "section_id": "SEC-CNB-ETW-UP",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-TRD-SEC-CNB-ETW-UP-04",
+      "asset_type": "OHE_Catenary",
+      "department": "TRD",
+      "section_id": "SEC-CNB-ETW-UP",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-TRD-SEC-CNB-ETW-UP-05",
+      "asset_type": "Traction_Substation_Bay",
+      "department": "TRD",
+      "section_id": "SEC-CNB-ETW-UP",
+      "criticality": 4.5
+    },
+    {
+      "asset_id": "AST-TRD-SEC-CNB-ETW-UP-06",
+      "asset_type": "OHE_Isolator",
+      "department": "TRD",
+      "section_id": "SEC-CNB-ETW-UP",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-S&T-SEC-CNB-ETW-UP-07",
+      "asset_type": "Point_Machine",
+      "department": "S&T",
+      "section_id": "SEC-CNB-ETW-UP",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-S&T-SEC-CNB-ETW-UP-08",
+      "asset_type": "Track_Circuit",
+      "department": "S&T",
+      "section_id": "SEC-CNB-ETW-UP",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-S&T-SEC-CNB-ETW-UP-09",
+      "asset_type": "Electronic_Interlocking",
+      "department": "S&T",
+      "section_id": "SEC-CNB-ETW-UP",
+      "criticality": 4.0
+    },
+    {
+      "asset_id": "AST-ENG-SEC-CNB-ETW-DN-01",
+      "asset_type": "Track_Segment",
+      "department": "Engineering",
+      "section_id": "SEC-CNB-ETW-DN",
+      "criticality": 4.0
+    },
+    {
+      "asset_id": "AST-ENG-SEC-CNB-ETW-DN-02",
+      "asset_type": "Ballast_Bed",
+      "department": "Engineering",
+      "section_id": "SEC-CNB-ETW-DN",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-ENG-SEC-CNB-ETW-DN-03",
+      "asset_type": "Turnout_Switch",
+      "department": "Engineering",
+      "section_id": "SEC-CNB-ETW-DN",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-TRD-SEC-CNB-ETW-DN-04",
+      "asset_type": "OHE_Catenary",
+      "department": "TRD",
+      "section_id": "SEC-CNB-ETW-DN",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-TRD-SEC-CNB-ETW-DN-05",
+      "asset_type": "Traction_Substation_Bay",
+      "department": "TRD",
+      "section_id": "SEC-CNB-ETW-DN",
+      "criticality": 4.5
+    },
+    {
+      "asset_id": "AST-TRD-SEC-CNB-ETW-DN-06",
+      "asset_type": "OHE_Isolator",
+      "department": "TRD",
+      "section_id": "SEC-CNB-ETW-DN",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-S&T-SEC-CNB-ETW-DN-07",
+      "asset_type": "Point_Machine",
+      "department": "S&T",
+      "section_id": "SEC-CNB-ETW-DN",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-S&T-SEC-CNB-ETW-DN-08",
+      "asset_type": "Track_Circuit",
+      "department": "S&T",
+      "section_id": "SEC-CNB-ETW-DN",
+      "criticality": 3.0
+    },
+    {
+      "asset_id": "AST-S&T-SEC-CNB-ETW-DN-09",
+      "asset_type": "Electronic_Interlocking",
+      "department": "S&T",
+      "section_id": "SEC-CNB-ETW-DN",
+      "criticality": 4.0
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "TSK-S&T-001",
+      "department": "S&T",
+      "asset_id": "AST-S&T-SEC-ALD-CNB-UP-08",
+      "section_id": "SEC-ALD-CNB-UP",
+      "duration": 2,
+      "due_date": 76,
+      "urgency": 3.0,
+      "criticality": 3.0,
+      "required_resources": [
+        "Signal_Testing_Kit"
+      ],
+      "description": "Planned S&T maintenance on Track_Circuit (SEC-ALD-CNB-UP)"
+    },
+    {
+      "task_id": "TSK-S&T-002",
+      "department": "S&T",
+      "asset_id": "AST-S&T-SEC-ALD-CNB-UP-09",
+      "section_id": "SEC-ALD-CNB-UP",
+      "duration": 4,
+      "due_date": 155,
+      "urgency": 1.7,
+      "criticality": 4.0,
+      "required_resources": [
+        "Signal_Testing_Kit"
+      ],
+      "description": "Planned S&T maintenance on Electronic_Interlocking (SEC-ALD-CNB-UP)"
+    },
+    {
+      "task_id": "TSK-ENG-003",
+      "department": "Engineering",
+      "asset_id": "AST-ENG-SEC-CNB-ETW-DN-01",
+      "section_id": "SEC-CNB-ETW-DN",
+      "duration": 2,
+      "due_date": 69,
+      "urgency": 1.6,
+      "criticality": 4.0,
+      "required_resources": [
+        "Tamper_Machine"
+      ],
+      "description": "Planned Engineering maintenance on Track_Segment (SEC-CNB-ETW-DN)"
+    },
+    {
+      "task_id": "TSK-TRD-004",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC-CNB-ETW-DN-06",
+      "section_id": "SEC-CNB-ETW-DN",
+      "duration": 4,
+      "due_date": 66,
+      "urgency": 1.6,
+      "criticality": 3.0,
+      "required_resources": [
+        "TRD_Testing_Van"
+      ],
+      "description": "Planned TRD maintenance on OHE_Isolator (SEC-CNB-ETW-DN)"
+    },
+    {
+      "task_id": "TSK-TRD-005",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC-ALD-CNB-DN-06",
+      "section_id": "SEC-ALD-CNB-DN",
+      "duration": 3,
+      "due_date": 16,
+      "urgency": 2.7,
+      "criticality": 3.0,
+      "required_resources": [
+        "Tower_Wagon"
+      ],
+      "description": "Planned TRD maintenance on OHE_Isolator (SEC-ALD-CNB-DN)"
+    },
+    {
+      "task_id": "TSK-ENG-006",
+      "department": "Engineering",
+      "asset_id": "AST-ENG-SEC-CNB-ETW-DN-01",
+      "section_id": "SEC-CNB-ETW-DN",
+      "duration": 3,
+      "due_date": 70,
+      "urgency": 2.1,
+      "criticality": 4.0,
+      "required_resources": [
+        "BCM_BallastCleaner"
+      ],
+      "description": "Planned Engineering maintenance on Track_Segment (SEC-CNB-ETW-DN)"
+    },
+    {
+      "task_id": "TSK-S&T-007",
+      "department": "S&T",
+      "asset_id": "AST-S&T-SEC-ALD-CNB-UP-07",
+      "section_id": "SEC-ALD-CNB-UP",
+      "duration": 2,
+      "due_date": 105,
+      "urgency": 2.3,
+      "criticality": 3.0,
+      "required_resources": [
+        "Axle_Counter_Kit"
+      ],
+      "description": "Planned S&T maintenance on Point_Machine (SEC-ALD-CNB-UP)"
+    },
+    {
+      "task_id": "TSK-S&T-008",
+      "department": "S&T",
+      "asset_id": "AST-S&T-SEC-ALD-CNB-DN-08",
+      "section_id": "SEC-ALD-CNB-DN",
+      "duration": 2,
+      "due_date": 151,
+      "urgency": 3.0,
+      "criticality": 3.0,
+      "required_resources": [
+        "Signal_Testing_Kit"
+      ],
+      "description": "Planned S&T maintenance on Track_Circuit (SEC-ALD-CNB-DN)"
+    },
+    {
+      "task_id": "TSK-S&T-009",
+      "department": "S&T",
+      "asset_id": "AST-S&T-SEC-CNB-ETW-UP-07",
+      "section_id": "SEC-CNB-ETW-UP",
+      "duration": 2,
+      "due_date": 106,
+      "urgency": 2.6,
+      "criticality": 3.0,
+      "required_resources": [
+        "Signal_Testing_Kit"
+      ],
+      "description": "Planned S&T maintenance on Point_Machine (SEC-CNB-ETW-UP)"
+    },
+    {
+      "task_id": "TSK-TRD-010",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC-ALD-CNB-UP-05",
+      "section_id": "SEC-ALD-CNB-UP",
+      "duration": 2,
+      "due_date": 88,
+      "urgency": 2.8,
+      "criticality": 4.5,
+      "required_resources": [
+        "Tower_Wagon"
+      ],
+      "description": "Planned TRD maintenance on Traction_Substation_Bay (SEC-ALD-CNB-UP)"
+    },
+    {
+      "task_id": "TSK-TRD-011",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC-ALD-CNB-DN-06",
+      "section_id": "SEC-ALD-CNB-DN",
+      "duration": 2,
+      "due_date": 130,
+      "urgency": 2.3,
+      "criticality": 3.0,
+      "required_resources": [
+        "TRD_Testing_Van"
+      ],
+      "description": "Planned TRD maintenance on OHE_Isolator (SEC-ALD-CNB-DN)"
+    },
+    {
+      "task_id": "TSK-ENG-012",
+      "department": "Engineering",
+      "asset_id": "AST-ENG-SEC-ALD-CNB-DN-02",
+      "section_id": "SEC-ALD-CNB-DN",
+      "duration": 3,
+      "due_date": 83,
+      "urgency": 2.2,
+      "criticality": 3.0,
+      "required_resources": [
+        "Track_Jack_Set"
+      ],
+      "description": "Planned Engineering maintenance on Ballast_Bed (SEC-ALD-CNB-DN)"
+    },
+    {
+      "task_id": "TSK-TRD-013",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC-ALD-CNB-UP-05",
+      "section_id": "SEC-ALD-CNB-UP",
+      "duration": 4,
+      "due_date": 152,
+      "urgency": 2.8,
+      "criticality": 4.5,
+      "required_resources": [
+        "Tower_Wagon"
+      ],
+      "description": "Planned TRD maintenance on Traction_Substation_Bay (SEC-ALD-CNB-UP)"
+    },
+    {
+      "task_id": "TSK-ENG-014",
+      "department": "Engineering",
+      "asset_id": "AST-ENG-SEC-ALD-CNB-DN-02",
+      "section_id": "SEC-ALD-CNB-DN",
+      "duration": 3,
+      "due_date": 157,
+      "urgency": 2.3,
+      "criticality": 3.0,
+      "required_resources": [
+        "Tamper_Machine"
+      ],
+      "description": "Planned Engineering maintenance on Ballast_Bed (SEC-ALD-CNB-DN)"
+    },
+    {
+      "task_id": "TSK-ENG-015",
+      "department": "Engineering",
+      "asset_id": "AST-ENG-SEC-CNB-ETW-UP-03",
+      "section_id": "SEC-CNB-ETW-UP",
+      "duration": 2,
+      "due_date": 22,
+      "urgency": 2.0,
+      "criticality": 3.0,
+      "required_resources": [
+        "BCM_BallastCleaner"
+      ],
+      "description": "Planned Engineering maintenance on Turnout_Switch (SEC-CNB-ETW-UP)"
+    },
+    {
+      "task_id": "TSK-S&T-016",
+      "department": "S&T",
+      "asset_id": "AST-S&T-SEC-CNB-ETW-UP-08",
+      "section_id": "SEC-CNB-ETW-UP",
+      "duration": 3,
+      "due_date": 160,
+      "urgency": 1.6,
+      "criticality": 3.0,
+      "required_resources": [
+        "Axle_Counter_Kit"
+      ],
+      "description": "Planned S&T maintenance on Track_Circuit (SEC-CNB-ETW-UP)"
+    },
+    {
+      "task_id": "TSK-TRD-017",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC-ALD-CNB-DN-05",
+      "section_id": "SEC-ALD-CNB-DN",
+      "duration": 4,
+      "due_date": 133,
+      "urgency": 2.5,
+      "criticality": 4.5,
+      "required_resources": [
+        "Tower_Wagon"
+      ],
+      "description": "Planned TRD maintenance on Traction_Substation_Bay (SEC-ALD-CNB-DN)"
+    },
+    {
+      "task_id": "TSK-S&T-018",
+      "department": "S&T",
+      "asset_id": "AST-S&T-SEC-ALD-CNB-DN-08",
+      "section_id": "SEC-ALD-CNB-DN",
+      "duration": 2,
+      "due_date": 157,
+      "urgency": 2.0,
+      "criticality": 3.0,
+      "required_resources": [
+        "Axle_Counter_Kit"
+      ],
+      "description": "Planned S&T maintenance on Track_Circuit (SEC-ALD-CNB-DN)"
+    },
+    {
+      "task_id": "TSK-ENG-019",
+      "department": "Engineering",
+      "asset_id": "AST-ENG-SEC-CNB-ETW-DN-01",
+      "section_id": "SEC-CNB-ETW-DN",
+      "duration": 4,
+      "due_date": 72,
+      "urgency": 2.3,
+      "criticality": 4.0,
+      "required_resources": [
+        "Tamper_Machine"
+      ],
+      "description": "Planned Engineering maintenance on Track_Segment (SEC-CNB-ETW-DN)"
+    },
+    {
+      "task_id": "TSK-TRD-020",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC-CNB-ETW-DN-06",
+      "section_id": "SEC-CNB-ETW-DN",
+      "duration": 3,
+      "due_date": 27,
+      "urgency": 1.7,
+      "criticality": 3.0,
+      "required_resources": [
+        "Tower_Wagon"
+      ],
+      "description": "Planned TRD maintenance on OHE_Isolator (SEC-CNB-ETW-DN)"
+    },
+    {
+      "task_id": "TSK-ENG-021",
+      "department": "Engineering",
+      "asset_id": "AST-ENG-SEC-ALD-CNB-DN-01",
+      "section_id": "SEC-ALD-CNB-DN",
+      "duration": 4,
+      "due_date": 124,
+      "urgency": 1.8,
+      "criticality": 4.0,
+      "required_resources": [
+        "Track_Jack_Set"
+      ],
+      "description": "Planned Engineering maintenance on Track_Segment (SEC-ALD-CNB-DN)"
+    },
+    {
+      "task_id": "TSK-TRD-022",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC-ALD-CNB-UP-05",
+      "section_id": "SEC-ALD-CNB-UP",
+      "duration": 3,
+      "due_date": 134,
+      "urgency": 2.3,
+      "criticality": 4.5,
+      "required_resources": [
+        "TRD_Testing_Van"
+      ],
+      "description": "Planned TRD maintenance on Traction_Substation_Bay (SEC-ALD-CNB-UP)"
+    },
+    {
+      "task_id": "TSK-S&T-023",
+      "department": "S&T",
+      "asset_id": "AST-S&T-SEC-CNB-ETW-DN-09",
+      "section_id": "SEC-CNB-ETW-DN",
+      "duration": 2,
+      "due_date": 43,
+      "urgency": 2.9,
+      "criticality": 4.0,
+      "required_resources": [
+        "Axle_Counter_Kit"
+      ],
+      "description": "Planned S&T maintenance on Electronic_Interlocking (SEC-CNB-ETW-DN)"
+    },
+    {
+      "task_id": "TSK-TRD-024",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC-CNB-ETW-UP-04",
+      "section_id": "SEC-CNB-ETW-UP",
+      "duration": 2,
+      "due_date": 54,
+      "urgency": 2.1,
+      "criticality": 3.0,
+      "required_resources": [
+        "TRD_Testing_Van"
+      ],
+      "description": "Planned TRD maintenance on OHE_Catenary (SEC-CNB-ETW-UP)"
+    },
+    {
+      "task_id": "TSK-ENG-025",
+      "department": "Engineering",
+      "asset_id": "AST-ENG-SEC-ALD-CNB-UP-01",
+      "section_id": "SEC-ALD-CNB-UP",
+      "duration": 4,
+      "due_date": 83,
+      "urgency": 3.3,
+      "criticality": 4.0,
+      "required_resources": [
+        "Track_Jack_Set"
+      ],
+      "description": "Planned Engineering maintenance on Track_Segment (SEC-ALD-CNB-UP)"
+    },
+    {
+      "task_id": "TSK-ENG-026",
+      "department": "Engineering",
+      "asset_id": "AST-ENG-SEC-ALD-CNB-DN-03",
+      "section_id": "SEC-ALD-CNB-DN",
+      "duration": 4,
+      "due_date": 92,
+      "urgency": 3.3,
+      "criticality": 3.0,
+      "required_resources": [
+        "Track_Jack_Set"
+      ],
+      "description": "Planned Engineering maintenance on Turnout_Switch (SEC-ALD-CNB-DN)"
+    },
+    {
+      "task_id": "TSK-TRD-027",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC-CNB-ETW-DN-06",
+      "section_id": "SEC-CNB-ETW-DN",
+      "duration": 4,
+      "due_date": 111,
+      "urgency": 1.9,
+      "criticality": 3.0,
+      "required_resources": [
+        "Tower_Wagon"
+      ],
+      "description": "Planned TRD maintenance on OHE_Isolator (SEC-CNB-ETW-DN)"
+    },
+    {
+      "task_id": "TSK-S&T-028",
+      "department": "S&T",
+      "asset_id": "AST-S&T-SEC-CNB-ETW-DN-08",
+      "section_id": "SEC-CNB-ETW-DN",
+      "duration": 4,
+      "due_date": 98,
+      "urgency": 3.3,
+      "criticality": 3.0,
+      "required_resources": [
+        "Axle_Counter_Kit"
+      ],
+      "description": "Planned S&T maintenance on Track_Circuit (SEC-CNB-ETW-DN)"
+    },
+    {
+      "task_id": "TSK-ENG-029",
+      "department": "Engineering",
+      "asset_id": "AST-ENG-SEC-ALD-CNB-UP-02",
+      "section_id": "SEC-ALD-CNB-UP",
+      "duration": 2,
+      "due_date": 92,
+      "urgency": 3.4,
+      "criticality": 3.0,
+      "required_resources": [
+        "Tamper_Machine"
+      ],
+      "description": "Planned Engineering maintenance on Ballast_Bed (SEC-ALD-CNB-UP)"
+    },
+    {
+      "task_id": "TSK-TRD-030",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC-ALD-CNB-UP-04",
+      "section_id": "SEC-ALD-CNB-UP",
+      "duration": 2,
+      "due_date": 34,
+      "urgency": 3.3,
+      "criticality": 3.0,
+      "required_resources": [
+        "Tower_Wagon"
+      ],
+      "description": "Planned TRD maintenance on OHE_Catenary (SEC-ALD-CNB-UP)"
+    },
+    {
+      "task_id": "TSK-TRD-031",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC-CNB-ETW-DN-05",
+      "section_id": "SEC-CNB-ETW-DN",
+      "duration": 2,
+      "due_date": 150,
+      "urgency": 3.5,
+      "criticality": 4.5,
+      "required_resources": [
+        "Tower_Wagon"
+      ],
+      "description": "Planned TRD maintenance on Traction_Substation_Bay (SEC-CNB-ETW-DN)"
+    },
+    {
+      "task_id": "TSK-S&T-032",
+      "department": "S&T",
+      "asset_id": "AST-S&T-SEC-ALD-CNB-UP-09",
+      "section_id": "SEC-ALD-CNB-UP",
+      "duration": 4,
+      "due_date": 156,
+      "urgency": 2.5,
+      "criticality": 4.0,
+      "required_resources": [
+        "Signal_Testing_Kit"
+      ],
+      "description": "Planned S&T maintenance on Electronic_Interlocking (SEC-ALD-CNB-UP)"
+    },
+    {
+      "task_id": "TSK-S&T-033",
+      "department": "S&T",
+      "asset_id": "AST-S&T-SEC-ALD-CNB-DN-08",
+      "section_id": "SEC-ALD-CNB-DN",
+      "duration": 4,
+      "due_date": 124,
+      "urgency": 3.2,
+      "criticality": 3.0,
+      "required_resources": [
+        "Signal_Testing_Kit"
+      ],
+      "description": "Planned S&T maintenance on Track_Circuit (SEC-ALD-CNB-DN)"
+    },
+    {
+      "task_id": "TSK-S&T-034",
+      "department": "S&T",
+      "asset_id": "AST-S&T-SEC-CNB-ETW-DN-08",
+      "section_id": "SEC-CNB-ETW-DN",
+      "duration": 4,
+      "due_date": 95,
+      "urgency": 2.9,
+      "criticality": 3.0,
+      "required_resources": [
+        "Axle_Counter_Kit"
+      ],
+      "description": "Planned S&T maintenance on Track_Circuit (SEC-CNB-ETW-DN)"
+    },
+    {
+      "task_id": "TSK-TRD-035",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC-CNB-ETW-UP-06",
+      "section_id": "SEC-CNB-ETW-UP",
+      "duration": 3,
+      "due_date": 130,
+      "urgency": 3.3,
+      "criticality": 3.0,
+      "required_resources": [
+        "Tower_Wagon"
+      ],
+      "description": "Planned TRD maintenance on OHE_Isolator (SEC-CNB-ETW-UP)"
+    }
+  ],
+  "trains": [
+    {
+      "train_id": "TRN-VAND-006-001",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 6,
+      "departure": 8,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-018-002",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 18,
+      "departure": 20,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-007-003",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 7,
+      "departure": 9,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-009-004",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 9,
+      "departure": 11,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-017-005",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 17,
+      "departure": 19,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-015-006",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 15,
+      "departure": 18,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-021-007",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 21,
+      "departure": 24,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-018-008",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 18,
+      "departure": 20,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-006-009",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 6,
+      "departure": 8,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-018-010",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 18,
+      "departure": 20,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-007-011",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 7,
+      "departure": 9,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-009-012",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 9,
+      "departure": 11,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-017-013",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 17,
+      "departure": 19,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-015-014",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 15,
+      "departure": 18,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-021-015",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 21,
+      "departure": 24,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-018-016",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 18,
+      "departure": 20,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-006-017",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 6,
+      "departure": 8,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-018-018",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 18,
+      "departure": 20,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-007-019",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 7,
+      "departure": 9,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-009-020",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 9,
+      "departure": 11,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-017-021",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 17,
+      "departure": 19,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-015-022",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 15,
+      "departure": 18,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-021-023",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 21,
+      "departure": 24,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-018-024",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 18,
+      "departure": 20,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-006-025",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 6,
+      "departure": 8,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-018-026",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 18,
+      "departure": 20,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-007-027",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 7,
+      "departure": 9,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-009-028",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 9,
+      "departure": 11,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-017-029",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 17,
+      "departure": 19,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-015-030",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 15,
+      "departure": 18,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-021-031",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 21,
+      "departure": 24,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-018-032",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 18,
+      "departure": 20,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-030-033",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 30,
+      "departure": 32,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-042-034",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 42,
+      "departure": 44,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-031-035",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 31,
+      "departure": 33,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-033-036",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 33,
+      "departure": 35,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-041-037",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 41,
+      "departure": 43,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-039-038",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 39,
+      "departure": 42,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-045-039",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 45,
+      "departure": 48,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-042-040",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 42,
+      "departure": 44,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-030-041",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 30,
+      "departure": 32,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-042-042",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 42,
+      "departure": 44,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-031-043",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 31,
+      "departure": 33,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-033-044",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 33,
+      "departure": 35,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-041-045",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 41,
+      "departure": 43,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-039-046",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 39,
+      "departure": 42,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-045-047",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 45,
+      "departure": 48,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-042-048",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 42,
+      "departure": 44,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-030-049",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 30,
+      "departure": 32,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-042-050",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 42,
+      "departure": 44,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-031-051",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 31,
+      "departure": 33,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-033-052",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 33,
+      "departure": 35,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-041-053",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 41,
+      "departure": 43,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-039-054",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 39,
+      "departure": 42,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-045-055",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 45,
+      "departure": 48,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-042-056",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 42,
+      "departure": 44,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-030-057",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 30,
+      "departure": 32,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-042-058",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 42,
+      "departure": 44,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-031-059",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 31,
+      "departure": 33,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-033-060",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 33,
+      "departure": 35,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-041-061",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 41,
+      "departure": 43,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-039-062",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 39,
+      "departure": 42,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-045-063",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 45,
+      "departure": 48,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-042-064",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 42,
+      "departure": 44,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-054-065",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 54,
+      "departure": 56,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-066-066",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 66,
+      "departure": 68,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-055-067",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 55,
+      "departure": 57,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-057-068",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 57,
+      "departure": 59,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-065-069",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 65,
+      "departure": 67,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-063-070",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 63,
+      "departure": 66,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-069-071",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 69,
+      "departure": 72,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-066-072",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 66,
+      "departure": 68,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-054-073",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 54,
+      "departure": 56,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-066-074",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 66,
+      "departure": 68,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-055-075",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 55,
+      "departure": 57,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-057-076",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 57,
+      "departure": 59,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-065-077",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 65,
+      "departure": 67,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-063-078",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 63,
+      "departure": 66,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-069-079",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 69,
+      "departure": 72,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-066-080",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 66,
+      "departure": 68,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-054-081",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 54,
+      "departure": 56,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-066-082",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 66,
+      "departure": 68,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-055-083",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 55,
+      "departure": 57,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-057-084",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 57,
+      "departure": 59,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-065-085",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 65,
+      "departure": 67,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-063-086",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 63,
+      "departure": 66,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-069-087",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 69,
+      "departure": 72,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-066-088",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 66,
+      "departure": 68,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-054-089",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 54,
+      "departure": 56,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-066-090",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 66,
+      "departure": 68,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-055-091",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 55,
+      "departure": 57,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-057-092",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 57,
+      "departure": 59,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-065-093",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 65,
+      "departure": 67,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-063-094",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 63,
+      "departure": 66,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-069-095",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 69,
+      "departure": 72,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-066-096",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 66,
+      "departure": 68,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-078-097",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 78,
+      "departure": 80,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-090-098",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 90,
+      "departure": 92,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-079-099",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 79,
+      "departure": 81,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-081-100",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 81,
+      "departure": 83,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-089-101",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 89,
+      "departure": 91,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-087-102",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 87,
+      "departure": 90,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-093-103",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 93,
+      "departure": 96,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-090-104",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 90,
+      "departure": 92,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-078-105",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 78,
+      "departure": 80,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-090-106",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 90,
+      "departure": 92,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-079-107",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 79,
+      "departure": 81,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-081-108",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 81,
+      "departure": 83,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-089-109",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 89,
+      "departure": 91,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-087-110",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 87,
+      "departure": 90,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-093-111",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 93,
+      "departure": 96,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-090-112",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 90,
+      "departure": 92,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-078-113",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 78,
+      "departure": 80,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-090-114",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 90,
+      "departure": 92,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-079-115",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 79,
+      "departure": 81,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-081-116",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 81,
+      "departure": 83,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-089-117",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 89,
+      "departure": 91,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-087-118",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 87,
+      "departure": 90,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-093-119",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 93,
+      "departure": 96,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-090-120",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 90,
+      "departure": 92,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-078-121",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 78,
+      "departure": 80,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-090-122",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 90,
+      "departure": 92,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-079-123",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 79,
+      "departure": 81,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-081-124",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 81,
+      "departure": 83,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-089-125",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 89,
+      "departure": 91,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-087-126",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 87,
+      "departure": 90,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-093-127",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 93,
+      "departure": 96,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-090-128",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 90,
+      "departure": 92,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-102-129",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 102,
+      "departure": 104,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-114-130",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 114,
+      "departure": 116,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-103-131",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 103,
+      "departure": 105,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-105-132",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 105,
+      "departure": 107,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-113-133",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 113,
+      "departure": 115,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-111-134",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 111,
+      "departure": 114,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-117-135",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 117,
+      "departure": 120,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-114-136",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 114,
+      "departure": 116,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-102-137",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 102,
+      "departure": 104,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-114-138",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 114,
+      "departure": 116,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-103-139",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 103,
+      "departure": 105,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-105-140",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 105,
+      "departure": 107,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-113-141",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 113,
+      "departure": 115,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-111-142",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 111,
+      "departure": 114,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-117-143",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 117,
+      "departure": 120,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-114-144",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 114,
+      "departure": 116,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-102-145",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 102,
+      "departure": 104,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-114-146",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 114,
+      "departure": 116,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-103-147",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 103,
+      "departure": 105,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-105-148",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 105,
+      "departure": 107,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-113-149",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 113,
+      "departure": 115,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-111-150",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 111,
+      "departure": 114,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-117-151",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 117,
+      "departure": 120,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-114-152",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 114,
+      "departure": 116,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-102-153",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 102,
+      "departure": 104,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-114-154",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 114,
+      "departure": 116,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-103-155",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 103,
+      "departure": 105,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-105-156",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 105,
+      "departure": 107,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-113-157",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 113,
+      "departure": 115,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-111-158",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 111,
+      "departure": 114,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-117-159",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 117,
+      "departure": 120,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-114-160",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 114,
+      "departure": 116,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-126-161",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 126,
+      "departure": 128,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-138-162",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 138,
+      "departure": 140,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-127-163",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 127,
+      "departure": 129,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-129-164",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 129,
+      "departure": 131,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-137-165",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 137,
+      "departure": 139,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-135-166",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 135,
+      "departure": 138,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-141-167",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 141,
+      "departure": 144,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-138-168",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 138,
+      "departure": 140,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-126-169",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 126,
+      "departure": 128,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-138-170",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 138,
+      "departure": 140,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-127-171",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 127,
+      "departure": 129,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-129-172",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 129,
+      "departure": 131,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-137-173",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 137,
+      "departure": 139,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-135-174",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 135,
+      "departure": 138,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-141-175",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 141,
+      "departure": 144,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-138-176",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 138,
+      "departure": 140,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-126-177",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 126,
+      "departure": 128,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-138-178",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 138,
+      "departure": 140,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-127-179",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 127,
+      "departure": 129,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-129-180",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 129,
+      "departure": 131,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-137-181",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 137,
+      "departure": 139,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-135-182",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 135,
+      "departure": 138,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-141-183",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 141,
+      "departure": 144,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-138-184",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 138,
+      "departure": 140,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-126-185",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 126,
+      "departure": 128,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-138-186",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 138,
+      "departure": 140,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-127-187",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 127,
+      "departure": 129,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-129-188",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 129,
+      "departure": 131,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-137-189",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 137,
+      "departure": 139,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-135-190",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 135,
+      "departure": 138,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-141-191",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 141,
+      "departure": 144,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-138-192",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 138,
+      "departure": 140,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-150-193",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 150,
+      "departure": 152,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-162-194",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 162,
+      "departure": 164,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-151-195",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 151,
+      "departure": 153,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-153-196",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 153,
+      "departure": 155,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-161-197",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 161,
+      "departure": 163,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-159-198",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 159,
+      "departure": 162,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-165-199",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 165,
+      "departure": 168,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-162-200",
+      "section_id": "SEC-ALD-CNB-UP",
+      "arrival": 162,
+      "departure": 164,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-150-201",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 150,
+      "departure": 152,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-162-202",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 162,
+      "departure": 164,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-151-203",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 151,
+      "departure": 153,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-153-204",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 153,
+      "departure": 155,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-161-205",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 161,
+      "departure": 163,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-159-206",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 159,
+      "departure": 162,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-165-207",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 165,
+      "departure": 168,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-162-208",
+      "section_id": "SEC-ALD-CNB-DN",
+      "arrival": 162,
+      "departure": 164,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-150-209",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 150,
+      "departure": 152,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-162-210",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 162,
+      "departure": 164,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-151-211",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 151,
+      "departure": 153,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-153-212",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 153,
+      "departure": 155,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-161-213",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 161,
+      "departure": 163,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-159-214",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 159,
+      "departure": 162,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-165-215",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 165,
+      "departure": 168,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-162-216",
+      "section_id": "SEC-CNB-ETW-UP",
+      "arrival": 162,
+      "departure": 164,
+      "service_class": "Passenger"
+    },
+    {
+      "train_id": "TRN-VAND-150-217",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 150,
+      "departure": 152,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-VAND-162-218",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 162,
+      "departure": 164,
+      "service_class": "VandeBharat"
+    },
+    {
+      "train_id": "TRN-RAJD-151-219",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 151,
+      "departure": 153,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-153-220",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 153,
+      "departure": 155,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-RAJD-161-221",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 161,
+      "departure": 163,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-FREI-159-222",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 159,
+      "departure": 162,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-FREI-165-223",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 165,
+      "departure": 168,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-PASS-162-224",
+      "section_id": "SEC-CNB-ETW-DN",
+      "arrival": 162,
+      "departure": 164,
+      "service_class": "Passenger"
+    }
+  ],
+  "windows": [
+    {
+      "window_id": "WIN-0001",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 1,
+      "end": 5,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0002",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 12,
+      "end": 15,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0003",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 1,
+      "end": 5,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0004",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 12,
+      "end": 15,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0005",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 1,
+      "end": 5,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0006",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 12,
+      "end": 15,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0007",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 1,
+      "end": 5,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0008",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 12,
+      "end": 15,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0009",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 25,
+      "end": 29,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0010",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 36,
+      "end": 39,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0011",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 25,
+      "end": 29,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0012",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 36,
+      "end": 39,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0013",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 25,
+      "end": 29,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0014",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 36,
+      "end": 39,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0015",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 25,
+      "end": 29,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0016",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 36,
+      "end": 39,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0017",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 49,
+      "end": 53,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0018",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 60,
+      "end": 63,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0019",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 49,
+      "end": 53,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0020",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 60,
+      "end": 63,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0021",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 49,
+      "end": 53,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0022",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 60,
+      "end": 63,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0023",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 49,
+      "end": 53,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0024",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 60,
+      "end": 63,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0025",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 73,
+      "end": 77,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0026",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 84,
+      "end": 87,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0027",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 73,
+      "end": 77,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0028",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 84,
+      "end": 87,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0029",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 73,
+      "end": 77,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0030",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 84,
+      "end": 87,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0031",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 73,
+      "end": 77,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0032",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 84,
+      "end": 87,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0033",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 97,
+      "end": 101,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0034",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 108,
+      "end": 111,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0035",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 97,
+      "end": 101,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0036",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 108,
+      "end": 111,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0037",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 97,
+      "end": 101,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0038",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 108,
+      "end": 111,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0039",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 97,
+      "end": 101,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0040",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 108,
+      "end": 111,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0041",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 121,
+      "end": 125,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0042",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 132,
+      "end": 135,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0043",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 121,
+      "end": 125,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0044",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 132,
+      "end": 135,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0045",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 121,
+      "end": 125,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0046",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 132,
+      "end": 135,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0047",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 121,
+      "end": 125,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0048",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 132,
+      "end": 135,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0049",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 145,
+      "end": 149,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0050",
+      "section_id": "SEC-ALD-CNB-UP",
+      "start": 156,
+      "end": 159,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0051",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 145,
+      "end": 149,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0052",
+      "section_id": "SEC-ALD-CNB-DN",
+      "start": 156,
+      "end": 159,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0053",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 145,
+      "end": 149,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0054",
+      "section_id": "SEC-CNB-ETW-UP",
+      "start": 156,
+      "end": 159,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    },
+    {
+      "window_id": "WIN-0055",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 145,
+      "end": 149,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-0056",
+      "section_id": "SEC-CNB-ETW-DN",
+      "start": 156,
+      "end": 159,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 15:00)"
+    }
+  ],
+  "constraints": [
+    {
+      "constraint_id": "CST-TRN-HARD",
+      "type": "HardTrainConflict",
+      "entity_ids": [
+        "TRN-VAND-006-001",
+        "TRN-VAND-018-002",
+        "TRN-RAJD-007-003",
+        "TRN-RAJD-009-004",
+        "TRN-RAJD-017-005",
+        "TRN-FREI-015-006",
+        "TRN-FREI-021-007",
+        "TRN-PASS-018-008",
+        "TRN-VAND-006-009",
+        "TRN-VAND-018-010",
+        "TRN-RAJD-007-011",
+        "TRN-RAJD-009-012",
+        "TRN-RAJD-017-013",
+        "TRN-FREI-015-014",
+        "TRN-FREI-021-015",
+        "TRN-PASS-018-016",
+        "TRN-VAND-006-017",
+        "TRN-VAND-018-018",
+        "TRN-RAJD-007-019",
+        "TRN-RAJD-009-020"
+      ],
+      "hard_or_soft": "hard",
+      "rule_text": "Zero physical overlap permitted between maintenance possession and scheduled train movements."
+    },
+    {
+      "constraint_id": "CST-WIN-BOUND",
+      "type": "SectionWindowBoundary",
+      "entity_ids": [
+        "WIN-0001",
+        "WIN-0002",
+        "WIN-0003",
+        "WIN-0004",
+        "WIN-0005",
+        "WIN-0006",
+        "WIN-0007",
+        "WIN-0008",
+        "WIN-0009",
+        "WIN-0010",
+        "WIN-0011",
+        "WIN-0012",
+        "WIN-0013",
+        "WIN-0014",
+        "WIN-0015",
+        "WIN-0016",
+        "WIN-0017",
+        "WIN-0018",
+        "WIN-0019",
+        "WIN-0020"
+      ],
+      "hard_or_soft": "hard",
+      "rule_text": "All maintenance tasks must fit strictly within permitted section corridor availability windows."
+    },
+    {
+      "constraint_id": "CST-SYNERGY-MULTI",
+      "type": "MultiDeptSynergy",
+      "entity_ids": [
+        "Engineering",
+        "TRD",
+        "S&T"
+      ],
+      "hard_or_soft": "soft",
+      "rule_text": "Co-schedule compatible multi-department maintenance tasks into unified integrated blocks to minimize net line possession hours."
+    }
+  ]
+}

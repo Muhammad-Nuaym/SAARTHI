@@ -1,0 +1,163 @@
+{
+  "scenario_id": "SCN-GOLD-STANDARD",
+  "name": "Gold-Standard Mini Case (Hand-Checkable)",
+  "description": "Hand-checkable 24-hour verification scenario on Kanpur-Prayagraj trunk corridor. Demonstrates multi-department co-scheduling, urgent task prioritization, zero train conflicts, and explainable downtime reduction.",
+  "horizon_hours": 24,
+  "is_synthetic": true,
+  "assets": [
+    {
+      "asset_id": "AST-ENG-SEC01-01",
+      "asset_type": "Track_Segment",
+      "department": "Engineering",
+      "section_id": "SEC-01",
+      "criticality": 4.0
+    },
+    {
+      "asset_id": "AST-TRD-SEC01-01",
+      "asset_type": "OHE_Catenary",
+      "department": "TRD",
+      "section_id": "SEC-01",
+      "criticality": 4.0
+    },
+    {
+      "asset_id": "AST-ST-SEC01-01",
+      "asset_type": "Point_Machine",
+      "department": "S&T",
+      "section_id": "SEC-01",
+      "criticality": 5.0
+    },
+    {
+      "asset_id": "AST-ENG-SEC02-01",
+      "asset_type": "Track_Segment",
+      "department": "Engineering",
+      "section_id": "SEC-02",
+      "criticality": 3.0
+    }
+  ],
+  "tasks": [
+    {
+      "task_id": "TSK-ST-01",
+      "department": "S&T",
+      "asset_id": "AST-ST-SEC01-01",
+      "section_id": "SEC-01",
+      "duration": 2,
+      "due_date": 10,
+      "urgency": 5.0,
+      "criticality": 5.0,
+      "required_resources": ["Signal_Testing_Kit"],
+      "description": "Urgent electronic interlocking & point machine calibration before peak morning corridor runs"
+    },
+    {
+      "task_id": "TSK-ENG-01",
+      "department": "Engineering",
+      "asset_id": "AST-ENG-SEC01-01",
+      "section_id": "SEC-01",
+      "duration": 3,
+      "due_date": 22,
+      "urgency": 3.5,
+      "criticality": 4.0,
+      "required_resources": ["Tamper_Machine_01"],
+      "description": "Deep ballast packing and mechanized track tamping on Up Main"
+    },
+    {
+      "task_id": "TSK-TRD-01",
+      "department": "TRD",
+      "asset_id": "AST-TRD-SEC01-01",
+      "section_id": "SEC-01",
+      "duration": 3,
+      "due_date": 22,
+      "urgency": 3.5,
+      "criticality": 4.0,
+      "required_resources": ["Tower_Wagon_01"],
+      "description": "OHE contact wire height & stagger adjustment and insulator cleaning"
+    },
+    {
+      "task_id": "TSK-ENG-02",
+      "department": "Engineering",
+      "asset_id": "AST-ENG-SEC02-01",
+      "section_id": "SEC-02",
+      "duration": 2,
+      "due_date": 20,
+      "urgency": 2.0,
+      "criticality": 3.0,
+      "required_resources": ["Light_Inspection_Trolley"],
+      "description": "Routine weld inspection and fastener tightening on Dn Main"
+    }
+  ],
+  "trains": [
+    {
+      "train_id": "TRN-12302-Rajdhani",
+      "section_id": "SEC-01",
+      "arrival": 6,
+      "departure": 8,
+      "service_class": "Rajdhani_MailExpress"
+    },
+    {
+      "train_id": "TRN-GDM-Freight",
+      "section_id": "SEC-01",
+      "arrival": 16,
+      "departure": 18,
+      "service_class": "Freight"
+    },
+    {
+      "train_id": "TRN-22436-VandeBharat",
+      "section_id": "SEC-02",
+      "arrival": 9,
+      "departure": 11,
+      "service_class": "VandeBharat"
+    }
+  ],
+  "windows": [
+    {
+      "window_id": "WIN-01",
+      "section_id": "SEC-01",
+      "start": 1,
+      "end": 5,
+      "reason": "Scheduled Night Traffic Calve (01:00 - 05:00)"
+    },
+    {
+      "window_id": "WIN-02",
+      "section_id": "SEC-01",
+      "start": 12,
+      "end": 16,
+      "reason": "Afternoon Non-Peak Corridor Slot (12:00 - 16:00)"
+    },
+    {
+      "window_id": "WIN-03",
+      "section_id": "SEC-02",
+      "start": 13,
+      "end": 17,
+      "reason": "Dn Main Scheduled Traffic Valley (13:00 - 17:00)"
+    }
+  ],
+  "constraints": [
+    {
+      "constraint_id": "CST-01",
+      "type": "HardTrainConflict",
+      "entity_ids": ["TRN-12302-Rajdhani", "TRN-GDM-Freight"],
+      "hard_or_soft": "hard",
+      "rule_text": "Zero block overlaps allowed with scheduled passenger and freight movements on SEC-01"
+    },
+    {
+      "constraint_id": "CST-02",
+      "type": "HardTrainConflict",
+      "entity_ids": ["TRN-22436-VandeBharat"],
+      "hard_or_soft": "hard",
+      "rule_text": "Zero block overlaps allowed with Vande Bharat high-priority path on SEC-02"
+    },
+    {
+      "constraint_id": "CST-03",
+      "type": "SectionWindowBoundary",
+      "entity_ids": ["WIN-01", "WIN-02", "WIN-03"],
+      "hard_or_soft": "hard",
+      "rule_text": "Tasks must be strictly executed inside corridor availability windows"
+    },
+    {
+      "constraint_id": "CST-04",
+      "type": "MultiDeptSynergy",
+      "entity_ids": ["TSK-ENG-01", "TSK-TRD-01"],
+      "hard_or_soft": "soft",
+      "rule_text": "Track tamping and OHE inspection on SEC-01 can share an integrated shadow block"
+    }
+  ]
+}
