@@ -1,15 +1,50 @@
 import React, { useState } from 'react';
 import { MaintenanceTask, Department } from '../types';
-import { Filter, AlertTriangle, Clock, Wrench, Search } from 'lucide-react';
+import { Filter, AlertTriangle, Clock, Wrench, Search, Sparkles, HelpCircle, X, CheckCircle2 } from 'lucide-react';
 
 interface DemandBoardProps {
   tasks: MaintenanceTask[];
 }
 
+export interface AIPriorityDetails {
+  score: number;
+  criticalityScore: number;
+  urgencyScore: number;
+  assetImpactScore: number;
+  duePressureScore: number;
+  why: string;
+}
+
+export const computeAIPriority = (t: MaintenanceTask): AIPriorityDetails => {
+  // Criticality: 40% (max 40)
+  const criticalityScore = Math.round((t.criticality / 5.0) * 40);
+  // Urgency: 30% (max 30)
+  const urgencyScore = Math.round((t.urgency / 5.0) * 30);
+  // Asset Impact: 20% (max 20) -> based on critical assets (Interlocking/Catenary/Track)
+  const isHighImpactAsset = t.criticality >= 4.0 || t.task_id.includes('EMERG') || t.task_id.includes('ST-01');
+  const assetImpactScore = isHighImpactAsset ? 20 : 12;
+  // Due-time pressure: 10% (max 10) -> earlier due date = higher pressure
+  const duePressureScore = Math.max(0, Math.min(10, Math.round((1.0 - Math.min(t.due_date, 48) / 48) * 10)));
+  const score = Math.min(100, criticalityScore + urgencyScore + assetImpactScore + duePressureScore);
+
+  let why = '';
+  if (t.urgency >= 4.8) {
+    why = `Emergency breakdown remediation on ${t.department} asset (${t.asset_id}). Maximum priority score (${score}/100) assigned to avert mainline train disruption.`;
+  } else if (t.criticality >= 4.0) {
+    why = `High priority (${score}/100) because the task affects a critical ${t.department} asset and is approaching its operational deadline within ${t.due_date}h.`;
+  } else {
+    why = `Routine cyclical maintenance (${score}/100) on ${t.department} asset. Scheduled flexibly within designated corridor maintenance valleys.`;
+  }
+
+  return { score, criticalityScore, urgencyScore, assetImpactScore, duePressureScore, why };
+};
+
 export const DemandBoard: React.FC<DemandBoardProps> = ({ tasks }) => {
   const [selectedDept, setSelectedDept] = useState<string>('ALL');
   const [selectedPriority, setSelectedPriority] = useState<string>('ALL');
+  const [sortBy, setSortBy] = useState<string>('PRIORITY');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [explainTask, setExplainTask] = useState<{ task: MaintenanceTask; details: AIPriorityDetails } | null>(null);
 
   const filteredTasks = tasks.filter(t => {
     if (selectedDept !== 'ALL' && t.department !== selectedDept) return false;
@@ -25,6 +60,15 @@ export const DemandBoard: React.FC<DemandBoardProps> = ({ tasks }) => {
       if (!match) return false;
     }
     return true;
+  }).sort((a, b) => {
+    if (sortBy === 'PRIORITY') {
+      return computeAIPriority(b).score - computeAIPriority(a).score;
+    } else if (sortBy === 'DUE_DATE') {
+      return a.due_date - b.due_date;
+    } else if (sortBy === 'DURATION') {
+      return b.duration - a.duration;
+    }
+    return 0;
   });
 
   const getDeptColor = (dept: Department) => {
@@ -92,6 +136,26 @@ export const DemandBoard: React.FC<DemandBoardProps> = ({ tasks }) => {
             <option value="ROUTINE">Routine Maintenance</option>
           </select>
 
+          {/* Sort By Filter */}
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            style={{
+              backgroundColor: '#1e293b',
+              color: '#f8fafc',
+              border: '1px solid #334155',
+              borderRadius: 6,
+              padding: '6px 12px',
+              fontSize: '0.8rem',
+              outline: 'none',
+              cursor: 'pointer'
+            }}
+          >
+            <option value="PRIORITY">Sort: AI Priority (High → Low)</option>
+            <option value="DUE_DATE">Sort: Due Date (Earliest)</option>
+            <option value="DURATION">Sort: Duration (Longest)</option>
+          </select>
+
           {/* Search Box */}
           <div style={{ position: 'relative' }}>
             <input
@@ -126,6 +190,7 @@ export const DemandBoard: React.FC<DemandBoardProps> = ({ tasks }) => {
               <th style={{ padding: '12px 16px' }}>Duration</th>
               <th style={{ padding: '12px 16px' }}>Due By (Hour)</th>
               <th style={{ padding: '12px 16px' }}>Urgency / Crit</th>
+              <th style={{ padding: '12px 16px' }}>AI Priority Score</th>
               <th style={{ padding: '12px 16px' }}>Required Resource</th>
               <th style={{ padding: '12px 16px' }}>Scope & Description</th>
             </tr>
@@ -134,6 +199,12 @@ export const DemandBoard: React.FC<DemandBoardProps> = ({ tasks }) => {
             {filteredTasks.map((t, idx) => {
               const deptCol = getDeptColor(t.department);
               const isEmergency = t.urgency >= 4.8;
+              const ai = computeAIPriority(t);
+              const isHigh = ai.score >= 75 && ai.score < 90;
+              const badgeBg = ai.score >= 90 ? '#ef444425' : (isHigh ? '#f59e0b25' : '#3b82f620');
+              const badgeColor = ai.score >= 90 ? '#f87171' : (isHigh ? '#fbbf24' : '#60a5fa');
+              const borderCol = ai.score >= 90 ? '#ef444450' : (isHigh ? '#f59e0b50' : '#3b82f640');
+
               return (
                 <tr
                   key={t.task_id}
@@ -179,6 +250,41 @@ export const DemandBoard: React.FC<DemandBoardProps> = ({ tasks }) => {
                       </span>
                     </div>
                   </td>
+                  <td style={{ padding: '12px 16px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                      <span style={{
+                        backgroundColor: badgeBg,
+                        color: badgeColor,
+                        border: `1px solid ${borderCol}`,
+                        padding: '2px 8px',
+                        borderRadius: 4,
+                        fontWeight: 700,
+                        fontFamily: 'monospace',
+                        fontSize: '0.78rem',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 4
+                      }}>
+                        <Sparkles size={11} />
+                        {ai.score}/100
+                      </span>
+                      <button
+                        onClick={() => setExplainTask({ task: t, details: ai })}
+                        style={{
+                          background: 'none',
+                          border: 'none',
+                          color: '#38bdf8',
+                          cursor: 'pointer',
+                          padding: '2px 4px',
+                          fontSize: '0.72rem',
+                          textDecoration: 'underline'
+                        }}
+                        title="Why this score?"
+                      >
+                        Why?
+                      </button>
+                    </div>
+                  </td>
                   <td style={{ padding: '12px 16px', color: '#94a3b8' }}>
                     {t.required_resources.length > 0 ? t.required_resources.join(', ') : 'Standard Gang'}
                   </td>
@@ -191,6 +297,101 @@ export const DemandBoard: React.FC<DemandBoardProps> = ({ tasks }) => {
           </tbody>
         </table>
       </div>
+
+      {/* AI Priority Scoring Explainability Modal / Drawer */}
+      {explainTask && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.7)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 9999,
+          padding: '20px'
+        }}>
+          <div style={{
+            backgroundColor: '#131b2e',
+            border: '1px solid #334155',
+            borderRadius: 12,
+            maxWidth: 540,
+            width: '100%',
+            padding: '24px',
+            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.5)'
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <Sparkles size={20} color="#818cf8" />
+                <h3 style={{ fontSize: '1.1rem', fontWeight: 700, color: '#f8fafc' }}>
+                  AI Priority Score: {explainTask.details.score}/100
+                </h3>
+              </div>
+              <button
+                onClick={() => setExplainTask(null)}
+                style={{ background: 'none', border: 'none', color: '#94a3b8', cursor: 'pointer' }}
+              >
+                <X size={20} />
+              </button>
+            </div>
+
+            <div style={{ fontSize: '0.8rem', color: '#cbd5e1', marginBottom: '16px' }}>
+              Task <strong style={{ color: '#ffffff', fontFamily: 'monospace' }}>{explainTask.task.task_id}</strong> ({explainTask.task.department}) on section <strong style={{ color: '#ffffff' }}>{explainTask.task.section_id}</strong>
+            </div>
+
+            {/* Score Factor Breakdown */}
+            <div style={{ backgroundColor: '#0f172a', border: '1px solid #1e293b', borderRadius: 8, padding: '14px', marginBottom: '16px' }}>
+              <div style={{ fontSize: '0.72rem', color: '#64748b', textTransform: 'uppercase', fontWeight: 700, marginBottom: 10, letterSpacing: '0.05em' }}>
+                Deterministic Mathematical Weighting
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: '0.78rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: '#94a3b8' }}>Criticality (Asset Impact Level):</span>
+                  <strong style={{ color: '#fbbf24' }}>{explainTask.details.criticalityScore} / 40 pts (40%)</strong>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: '#94a3b8' }}>Urgency (Operational Fault Risk):</span>
+                  <strong style={{ color: '#f87171' }}>{explainTask.details.urgencyScore} / 30 pts (30%)</strong>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: '#94a3b8' }}>Asset Corridor Weight (Trunk Mainline):</span>
+                  <strong style={{ color: '#60a5fa' }}>{explainTask.details.assetImpactScore} / 20 pts (20%)</strong>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                  <span style={{ color: '#94a3b8' }}>Due-Time Pressure (Deadline Proximity):</span>
+                  <strong style={{ color: '#a78bfa' }}>{explainTask.details.duePressureScore} / 10 pts (10%)</strong>
+                </div>
+              </div>
+            </div>
+
+            {/* Plain English Explanation */}
+            <div style={{ backgroundColor: '#1e293b', borderRadius: 8, padding: '12px 14px', marginBottom: '20px', fontSize: '0.82rem', color: '#e2e8f0', lineHeight: 1.5 }}>
+              <strong style={{ color: '#38bdf8' }}>Operational Rationale: </strong>
+              {explainTask.details.why}
+            </div>
+
+            <div style={{ textAlign: 'right' }}>
+              <button
+                onClick={() => setExplainTask(null)}
+                style={{
+                  backgroundColor: '#3b82f6',
+                  color: '#ffffff',
+                  border: 'none',
+                  borderRadius: 6,
+                  padding: '8px 18px',
+                  fontSize: '0.82rem',
+                  fontWeight: 600,
+                  cursor: 'pointer'
+                }}
+              >
+                Close Explanation
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

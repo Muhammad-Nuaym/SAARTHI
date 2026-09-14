@@ -190,7 +190,7 @@
             "TRD"
           ],
           "status": "Integrated",
-          "reason": "AI Integrated Block: Co-scheduled S&T + Engineering + TRD on SEC-01 during hours 01:00-04:00. Saved 5.0h of track possession downtime while protecting all train paths."
+          "reason": "AI Integrated Block: Co-scheduled S&T + Engineering + TRD on SEC-01 during hours 01:00-04:00. Saved 3.0h of track possession downtime while protecting all train paths."
         },
         {
           "block_id": "BLK-OPT-0002",
@@ -1885,7 +1885,7 @@
             "TRD"
           ],
           "status": "Integrated",
-          "reason": "AI Integrated Block: Co-scheduled S&T + Engineering + TRD on SEC-CNB-ETW-DN during hours 12:00-15:00. Saved 5.0h of track possession downtime while protecting all train paths."
+          "reason": "AI Integrated Block: Co-scheduled S&T + Engineering + TRD on SEC-CNB-ETW-DN during hours 12:00-15:00. Saved 3.0h of track possession downtime while protecting all train paths."
         },
         {
           "block_id": "BLK-OPT-0002",
@@ -4814,7 +4814,7 @@
             "S&T"
           ],
           "status": "Integrated",
-          "reason": "AI Integrated Block: Co-scheduled Engineering + TRD + S&T on SEC-ALD-CNB-DN during hours 36:00-39:00. Saved 5.0h of track possession downtime while protecting all train paths."
+          "reason": "AI Integrated Block: Co-scheduled Engineering + TRD + S&T on SEC-ALD-CNB-DN during hours 36:00-39:00. Saved 3.0h of track possession downtime while protecting all train paths."
         },
         {
           "block_id": "BLK-OPT-0021",
@@ -4882,7 +4882,7 @@
             "TRD"
           ],
           "status": "Integrated",
-          "reason": "AI Integrated Block: Co-scheduled S&T + Engineering + TRD on SEC-ALD-CNB-UP during hours 49:00-53:00. Saved 5.0h of track possession downtime while protecting all train paths."
+          "reason": "AI Integrated Block: Co-scheduled S&T + Engineering + TRD on SEC-ALD-CNB-UP during hours 49:00-53:00. Saved 3.0h of track possession downtime while protecting all train paths."
         },
         {
           "block_id": "BLK-OPT-0029",
@@ -5093,7 +5093,7 @@
             "TRD"
           ],
           "status": "Integrated",
-          "reason": "AI Integrated Block: Co-scheduled Engineering + S&T + TRD on SEC-ALD-CNB-UP during hours 97:00-101:00. Saved 5.0h of track possession downtime while protecting all train paths."
+          "reason": "AI Integrated Block: Co-scheduled Engineering + S&T + TRD on SEC-ALD-CNB-UP during hours 97:00-101:00. Saved 3.0h of track possession downtime while protecting all train paths."
         },
         {
           "block_id": "BLK-OPT-0017",
@@ -7378,7 +7378,7 @@
             "Engineering"
           ],
           "status": "Integrated",
-          "reason": "AI Integrated Block: Co-scheduled S&T + TRD + Engineering on SEC-ALD-CNB-UP during hours 12:00-15:00. Saved 5.0h of track possession downtime while protecting all train paths."
+          "reason": "AI Integrated Block: Co-scheduled S&T + TRD + Engineering on SEC-ALD-CNB-UP during hours 12:00-15:00. Saved 3.0h of track possession downtime while protecting all train paths."
         },
         {
           "block_id": "BLK-OPT-0023",
@@ -7396,7 +7396,7 @@
             "Engineering"
           ],
           "status": "Integrated",
-          "reason": "AI Integrated Block: Co-scheduled S&T + TRD + Engineering on SEC-CNB-ETW-DN during hours 12:00-15:00. Saved 5.0h of track possession downtime while protecting all train paths."
+          "reason": "AI Integrated Block: Co-scheduled S&T + TRD + Engineering on SEC-CNB-ETW-DN during hours 12:00-15:00. Saved 3.0h of track possession downtime while protecting all train paths."
         },
         {
           "block_id": "BLK-OPT-0017",
@@ -7584,7 +7584,7 @@
             "Engineering"
           ],
           "status": "Integrated",
-          "reason": "AI Integrated Block: Co-scheduled S&T + TRD + Engineering on SEC-CNB-ETW-UP during hours 49:00-53:00. Saved 5.0h of track possession downtime while protecting all train paths."
+          "reason": "AI Integrated Block: Co-scheduled S&T + TRD + Engineering on SEC-CNB-ETW-UP during hours 49:00-53:00. Saved 3.0h of track possession downtime while protecting all train paths."
         },
         {
           "block_id": "BLK-OPT-0027",
@@ -12720,7 +12720,7 @@
             "S&T"
           ],
           "status": "Integrated",
-          "reason": "AI Integrated Block: Co-scheduled Engineering + TRD + S&T on SEC-ALD-CNB-UP during hours 25:00-29:00. Saved 5.0h of track possession downtime while protecting all train paths."
+          "reason": "AI Integrated Block: Co-scheduled Engineering + TRD + S&T on SEC-ALD-CNB-UP during hours 25:00-29:00. Saved 3.0h of track possession downtime while protecting all train paths."
         },
         {
           "block_id": "BLK-OPT-0020",

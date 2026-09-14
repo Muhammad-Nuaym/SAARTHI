@@ -17,7 +17,7 @@ export async function fetchScenarios(): Promise<ScenarioSummary[]> {
     {
       id: 'gold_standard',
       name: 'Gold-Standard Mini Case (Hand-Checkable)',
-      description: 'Hand-checkable 24-hour verification scenario on Kanpur-Prayagraj trunk corridor. Demonstrates multi-department co-scheduling, urgent task prioritization, and zero train conflicts.',
+      description: 'Representative simulated operational condition: 24-hour verification scenario on Kanpur-Prayagraj trunk corridor. Demonstrates multi-department co-scheduling, urgent task prioritization, and 0 simulated train conflicts.',
       horizon_hours: 24,
       task_count: 4,
       train_count: 3,
@@ -28,7 +28,7 @@ export async function fetchScenarios(): Promise<ScenarioSummary[]> {
     {
       id: 'normal',
       name: 'Corridor Normal Operations',
-      description: 'Balanced maintenance load with ample scheduled traffic windows and minimal section contention across 4 corridor lines.',
+      description: 'Representative simulated operational condition: balanced maintenance load with ample scheduled traffic windows and minimal section contention across 4 corridor lines.',
       horizon_hours: 168,
       task_count: 35,
       train_count: 224,
@@ -39,7 +39,7 @@ export async function fetchScenarios(): Promise<ScenarioSummary[]> {
     {
       id: 'conflict',
       name: 'Corridor High-Contention Operations',
-      description: 'Heavy overlapping maintenance demand across Engineering, TRD, and S&T competing for identical corridor windows.',
+      description: 'Representative simulated operational condition: heavy overlapping maintenance demand across Engineering, TRD, and S&T departments competing for identical corridor possession windows.',
       horizon_hours: 168,
       task_count: 84,
       train_count: 224,
@@ -50,7 +50,7 @@ export async function fetchScenarios(): Promise<ScenarioSummary[]> {
     {
       id: 'urgent',
       name: 'Corridor Critical & Emergency Operations',
-      description: 'High-urgency emergency repairs with tight due dates requiring dynamic block preemption without disrupting express trains.',
+      description: 'Representative simulated operational condition: high-urgency emergency repairs with tight due dates requiring dynamic block preemption without disrupting express passenger trains.',
       horizon_hours: 168,
       task_count: 56,
       train_count: 224,

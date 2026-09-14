@@ -216,6 +216,86 @@ export const CurrentStateView: React.FC<CurrentStateViewProps> = ({ data, onSwit
           ))}
         </div>
       </div>
+
+      {/* Conflict Detection Inspector */}
+      <div style={{ marginTop: '20px', backgroundColor: '#131b2e', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: 10, padding: '18px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <AlertOctagon size={18} color="#f87171" />
+            <h4 style={{ fontSize: '0.92rem', fontWeight: 700, color: '#f8fafc' }}>
+              Simulated Train Conflict & Path Infringement Detection
+            </h4>
+          </div>
+          <span style={{
+            backgroundColor: 'rgba(239, 68, 68, 0.15)',
+            color: '#f87171',
+            border: '1px solid rgba(239, 68, 68, 0.3)',
+            fontSize: '0.72rem',
+            padding: '2px 8px',
+            borderRadius: 4,
+            fontWeight: 600
+          }}>
+            {data.baseline.metrics.train_conflict_count > 0 ? `${data.baseline.metrics.train_conflict_count} Active Infringements` : 'Siloed Window Contention'}
+          </span>
+        </div>
+
+        <p style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: '14px', lineHeight: 1.4 }}>
+          In current siloed practice, departments request possessions without automated checking against Control Office Application (COA) train timetables, risking train delays or emergency block cancellations.
+        </p>
+
+        <div style={{ overflowX: 'auto' }}>
+          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.78rem', textAlign: 'left' }}>
+            <thead>
+              <tr style={{ backgroundColor: '#0f172a', borderBottom: '1px solid #1e293b', color: '#64748b' }}>
+                <th style={{ padding: '8px 12px' }}>Train ID</th>
+                <th style={{ padding: '8px 12px' }}>Train Type</th>
+                <th style={{ padding: '8px 12px' }}>Corridor Section</th>
+                <th style={{ padding: '8px 12px' }}>Scheduled Path</th>
+                <th style={{ padding: '8px 12px' }}>Conflicting Block</th>
+                <th style={{ padding: '8px 12px' }}>Conflict Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style={{ borderBottom: '1px solid #1e293b' }}>
+                <td style={{ padding: '10px 12px', fontWeight: 600, color: '#f1f5f9', fontFamily: 'monospace' }}>12301 Rajdhani Exp</td>
+                <td style={{ padding: '10px 12px', color: '#38bdf8' }}>Passenger Express</td>
+                <td style={{ padding: '10px 12px', color: '#cbd5e1' }}>SEC-ALD-CNB-UP</td>
+                <td style={{ padding: '10px 12px', color: '#fbbf24' }}>07:00 – 09:00</td>
+                <td style={{ padding: '10px 12px', color: '#94a3b8' }}>BLK-ENG-001 (06:00–09:00)</td>
+                <td style={{ padding: '10px 12px' }}>
+                  <span style={{ backgroundColor: 'rgba(239, 68, 68, 0.2)', color: '#f87171', padding: '2px 8px', borderRadius: 4, fontWeight: 700, fontSize: '0.72rem' }}>
+                    HARD CONFLICT
+                  </span>
+                </td>
+              </tr>
+              <tr style={{ borderBottom: '1px solid #1e293b' }}>
+                <td style={{ padding: '10px 12px', fontWeight: 600, color: '#f1f5f9', fontFamily: 'monospace' }}>22436 Vande Bharat</td>
+                <td style={{ padding: '10px 12px', color: '#38bdf8' }}>High-Speed Express</td>
+                <td style={{ padding: '10px 12px', color: '#cbd5e1' }}>SEC-CNB-ETW-UP</td>
+                <td style={{ padding: '10px 12px', color: '#fbbf24' }}>06:00 – 08:00</td>
+                <td style={{ padding: '10px 12px', color: '#94a3b8' }}>BLK-TRD-002 (05:00–08:00)</td>
+                <td style={{ padding: '10px 12px' }}>
+                  <span style={{ backgroundColor: 'rgba(239, 68, 68, 0.2)', color: '#f87171', padding: '2px 8px', borderRadius: 4, fontWeight: 700, fontSize: '0.72rem' }}>
+                    HARD CONFLICT
+                  </span>
+                </td>
+              </tr>
+              <tr>
+                <td style={{ padding: '10px 12px', fontWeight: 600, color: '#f1f5f9', fontFamily: 'monospace' }}>BOXN-Coal-401</td>
+                <td style={{ padding: '10px 12px', color: '#a78bfa' }}>Heavy Freight</td>
+                <td style={{ padding: '10px 12px', color: '#cbd5e1' }}>SEC-ALD-CNB-DN</td>
+                <td style={{ padding: '10px 12px', color: '#fbbf24' }}>21:00 – 00:00</td>
+                <td style={{ padding: '10px 12px', color: '#94a3b8' }}>BLK-ST-003 (20:00–23:00)</td>
+                <td style={{ padding: '10px 12px' }}>
+                  <span style={{ backgroundColor: 'rgba(245, 158, 11, 0.2)', color: '#fbbf24', padding: '2px 8px', borderRadius: 4, fontWeight: 700, fontSize: '0.72rem' }}>
+                    POTENTIAL PATH CLASH
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
