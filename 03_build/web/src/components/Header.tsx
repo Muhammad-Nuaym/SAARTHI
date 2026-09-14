@@ -39,8 +39,11 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <h1 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#f8fafc', letterSpacing: '-0.02em' }}>
-                SIH26027: AI Automatic Block Planning
+              <h1 style={{ fontSize: '1.25rem', fontWeight: 700, color: '#f8fafc', letterSpacing: '-0.02em', display: 'flex', alignItems: 'center', gap: 8 }}>
+                <span>SAARTHI</span>
+                <span style={{ fontSize: '0.78rem', color: '#818cf8', fontWeight: 500, backgroundColor: '#312e8140', padding: '2px 8px', borderRadius: 4, border: '1px solid #4338ca50' }}>
+                  SIH26027
+                </span>
               </h1>
               {/* Mandatory Synthetic Data Badge */}
               <span style={{
@@ -60,7 +63,7 @@ export const Header: React.FC<HeaderProps> = ({
               </span>
             </div>
             <p style={{ fontSize: '0.8rem', color: '#94a3b8', marginTop: 2 }}>
-              Demonstrator of planning logic • Indian Railways High-Density Corridor • Not live COA/TMS/BDMS
+              <strong style={{ color: '#cbd5e1' }}>Smart AI-Assisted Railway Resource &amp; Track Harmonization Interface</strong> • Indian Railways Corridor Operations
             </p>
           </div>
         </div>

@@ -24,8 +24,8 @@ from optimizer.metrics import compute_all_metrics
 from data.generator import generate_scenario
 
 app = FastAPI(
-    title="SIH26027 Railway Block Planning Simulator API",
-    description="Backend service demonstrating AI-Powered Automatic Block Planning on Indian Railways.",
+    title="SAARTHI — Smart AI-Assisted Railway Resource & Track Harmonization Interface API",
+    description="Backend service demonstrating AI-Powered Automatic Block Planning on Indian Railways (SIH26027).",
     version="1.0.0"
 )
 
@@ -74,7 +74,8 @@ class OptimizeRequest(BaseModel):
 def health_check():
     return {
         "status": "healthy",
-        "service": "SIH26027 Automatic Block Planning Simulator",
+        "service": "SAARTHI: Smart AI-Assisted Railway Resource & Track Harmonization Interface",
+        "problem_code": "SIH26027",
         "environment": "Prototype / Demonstrator",
         "data_mode": "Synthetic Scenario Data (No live TMS/COA connection)"
     }

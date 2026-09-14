@@ -1,4 +1,5 @@
-# SIH26027 Role 3: AI-Powered Automatic Block Planning Demonstrator
+# SAARTHI — Smart AI-Assisted Railway Resource & Track Harmonization Interface
+### SIH26027 Role 3: AI-Powered Automatic Block Planning Demonstrator
 
 > **PROTOTYPE DEMONSTRATOR — SYNTHETIC SCENARIO DATA**  
 > *Demonstrator of planning logic on Indian Railways high-density corridors. Not connected to live BDMS/COA/TMS/SMMS.*
@@ -7,7 +8,7 @@
 
 ## 1. Overview & Mission
 
-This repository implements the complete **Role 3 (Build & Simulate)** deliverable for **SIH26027: AI-Powered Automatic Block Planning to Maximize Asset Availability for Train Operations on Indian Railways**.
+**SAARTHI** (**S**mart **A**I-**A**ssisted **R**ailway Resource & **T**rack **H**armonization **I**nterface) is the complete **Role 3 (Build & Simulate)** deliverable for **SIH26027: AI-Powered Automatic Block Planning to Maximize Asset Availability for Train Operations on Indian Railways**.
 
 It demonstrates the transition from current Indian Railways practice (**uncoordinated departmental silos** submitting ad-hoc line possession requests to section controllers) to an **AI-optimized constraint programming model (Google OR-Tools CP-SAT)** that:
 1. Protects all passenger and freight train movements (**0 hard train conflicts**).
