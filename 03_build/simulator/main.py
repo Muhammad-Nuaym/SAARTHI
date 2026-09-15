@@ -137,7 +137,7 @@ def run_optimization(req: OptimizeRequest):
 
     # 2. Run CP-SAT AI optimizer
     optimizer = RailwayBlockOptimizer(bundle)
-    opt_blocks, opt_metrics = optimizer.solve(time_limit_seconds=10.0)
+    opt_blocks, opt_metrics, solver_stats = optimizer.solve(time_limit_seconds=10.0)
 
     # 3. Calculate deltas
     hours_saved = max(0, baseline_metrics["total_block_hours"] - opt_metrics["total_block_hours"])
@@ -164,7 +164,8 @@ def run_optimization(req: OptimizeRequest):
         },
         "optimized": {
             "blocks": [b.model_dump() for b in opt_blocks],
-            "metrics": opt_metrics
+            "metrics": opt_metrics,
+            "solver_stats": solver_stats
         },
         "delta": {
             "block_hours_saved": hours_saved,

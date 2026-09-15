@@ -56,7 +56,7 @@ def test_baseline_on_gold_standard(gold_standard_bundle):
 def test_cpsat_optimizer_on_gold_standard(gold_standard_bundle):
     """Verifies CP-SAT optimizer satisfies all mathematical constraints and demonstrates co-scheduling."""
     optimizer = RailwayBlockOptimizer(gold_standard_bundle)
-    opt_blocks, metrics = optimizer.solve(time_limit_seconds=5.0)
+    opt_blocks, metrics, solver_stats = optimizer.solve(time_limit_seconds=5.0)
 
     assert len(opt_blocks) > 0, "Optimizer should return a feasible schedule"
 

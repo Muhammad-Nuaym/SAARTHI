@@ -34,7 +34,7 @@ class RailwayBlockOptimizer:
         self.model = cp_model.CpModel()
         self.solver = cp_model.CpSolver()
 
-    def solve(self, time_limit_seconds: float = 10.0) -> Tuple[List[ScheduleBlock], Dict[str, Any]]:
+    def solve(self, time_limit_seconds: float = 10.0) -> Tuple[List[ScheduleBlock], Dict[str, Any], Dict[str, Any]]:
         model = self.model
         tasks = self.bundle.tasks
         trains = self.bundle.trains
@@ -99,11 +99,12 @@ class RailwayBlockOptimizer:
                 model.Add(is_sched == 0)
 
             # Lateness variable: lateness >= end - due_date
-            lat = model.NewIntVar(0, self.horizon_hours, f"late_t{i}")
+            # The + 24 is to match metrics.py unscheduled penalty buffer.
+            lat = model.NewIntVar(0, self.horizon_hours + 24, f"late_t{i}")
             lateness_var[i] = lat
             model.Add(lat >= e - task.due_date).OnlyEnforceIf(is_sched)
             # If not scheduled, apply max lateness
-            model.Add(lat >= (self.horizon_hours - task.due_date)).OnlyEnforceIf(is_sched.Not())
+            model.Add(lat == (max(0, self.horizon_hours - task.due_date) + 24)).OnlyEnforceIf(is_sched.Not())
 
         # 2. HARD CONSTRAINT: Zero train conflicts
         # Train paths are inviolable. A task scheduled in window w must not intersect
@@ -204,9 +205,18 @@ class RailwayBlockOptimizer:
         self.solver.parameters.num_search_workers = 4
         status = self.solver.Solve(model)
 
+        status_str = "OPTIMAL" if status == cp_model.OPTIMAL else "FEASIBLE" if status == cp_model.FEASIBLE else "INFEASIBLE"
+        solver_stats = {
+            "status": status_str,
+            "runtime_seconds": self.solver.WallTime(),
+            "objective_value": self.solver.ObjectiveValue() if status in (cp_model.OPTIMAL, cp_model.FEASIBLE) else 0.0,
+            "num_variables": len(model.Proto().variables),
+            "num_constraints": len(model.Proto().constraints)
+        }
+
         if status not in (cp_model.OPTIMAL, cp_model.FEASIBLE):
             # Fallback empty schedule
-            return [], {}
+            return [], {}, solver_stats
 
         # 7. Reconstruct Integrated Schedule Blocks
         scheduled_tasks_info = []
@@ -234,7 +244,7 @@ class RailwayBlockOptimizer:
             horizon_hours=self.horizon_hours
         )
 
-        return blocks, metrics
+        return blocks, metrics, solver_stats
 
     def _cluster_into_blocks(self, scheduled_info: List[Dict[str, Any]]) -> List[ScheduleBlock]:
         """

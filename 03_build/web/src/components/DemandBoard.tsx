@@ -16,24 +16,31 @@ export interface AIPriorityDetails {
 }
 
 export const computeAIPriority = (t: MaintenanceTask): AIPriorityDetails => {
-  // Criticality: 40% (max 40)
-  const criticalityScore = Math.round((t.criticality / 5.0) * 40);
-  // Urgency: 30% (max 30)
-  const urgencyScore = Math.round((t.urgency / 5.0) * 30);
-  // Asset Impact: 20% (max 20) -> based on critical assets (Interlocking/Catenary/Track)
-  const isHighImpactAsset = t.criticality >= 4.0 || t.task_id.includes('EMERG') || t.task_id.includes('ST-01');
-  const assetImpactScore = isHighImpactAsset ? 20 : 12;
-  // Due-time pressure: 10% (max 10) -> earlier due date = higher pressure
-  const duePressureScore = Math.max(0, Math.min(10, Math.round((1.0 - Math.min(t.due_date, 48) / 48) * 10)));
-  const score = Math.min(100, criticalityScore + urgencyScore + assetImpactScore + duePressureScore);
+  // CP-SAT Optimizer formula:
+  // priority_weight = (urgency * 20 + criticality * 20)
+  // Base schedule incentive: 500 + priority_weight
+  // Max possible priority_weight = 5*20 + 5*20 = 200. We normalize this to a 100-point scale.
+  
+  const urgencyScore = Math.round(t.urgency * 10);      // Max 50
+  const criticalityScore = Math.round(t.criticality * 10); // Max 50
+  
+  // The solver also heavily penalizes lateness based on criticality: late_penalty_weight = criticality * 15
+  // We expose this as due pressure in the explainability.
+  const latePenaltyWeight = Math.round(t.criticality * 15); // Max 75
+  const duePressureScore = t.due_date < 24 ? Math.min(20, Math.round(latePenaltyWeight * 0.2)) : 0;
+  
+  const assetImpactScore = t.criticality >= 4.0 ? 15 : 5; // simplified representation of asset value
+
+  // Cap at 100
+  const score = Math.min(100, urgencyScore + criticalityScore);
 
   let why = '';
   if (t.urgency >= 4.8) {
-    why = `Emergency breakdown remediation on ${t.department} asset (${t.asset_id}). Maximum priority score (${score}/100) assigned to avert mainline train disruption.`;
+    why = `Emergency breakdown remediation on ${t.department} asset (${t.asset_id}). Maximum priority score (${score}/100) assigned by AI to avert mainline train disruption. The solver weights this at 500 + ${urgencyScore * 2 + criticalityScore * 2} for immediate scheduling.`;
   } else if (t.criticality >= 4.0) {
-    why = `High priority (${score}/100) because the task affects a critical ${t.department} asset and is approaching its operational deadline within ${t.due_date}h.`;
+    why = `High priority (${score}/100) because the task affects a critical ${t.department} asset. The solver applies a severe lateness penalty of ${latePenaltyWeight} points/hour if delayed past hour ${t.due_date}.`;
   } else {
-    why = `Routine cyclical maintenance (${score}/100) on ${t.department} asset. Scheduled flexibly within designated corridor maintenance valleys.`;
+    why = `Routine cyclical maintenance (${score}/100) on ${t.department} asset. The solver balances its scheduling incentive (500 + ${urgencyScore * 2 + criticalityScore * 2}) against multi-department synergy bonuses (400) to find the optimal shared track window.`;
   }
 
   return { score, criticalityScore, urgencyScore, assetImpactScore, duePressureScore, why };
@@ -349,19 +356,15 @@ export const DemandBoard: React.FC<DemandBoardProps> = ({ tasks }) => {
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8, fontSize: '0.78rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <span style={{ color: '#94a3b8' }}>Criticality (Asset Impact Level):</span>
-                  <strong style={{ color: '#fbbf24' }}>{explainTask.details.criticalityScore} / 40 pts (40%)</strong>
+                  <strong style={{ color: '#fbbf24' }}>{explainTask.details.criticalityScore} / 50 pts (50%)</strong>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <span style={{ color: '#94a3b8' }}>Urgency (Operational Fault Risk):</span>
-                  <strong style={{ color: '#f87171' }}>{explainTask.details.urgencyScore} / 30 pts (30%)</strong>
+                  <strong style={{ color: '#f87171' }}>{explainTask.details.urgencyScore} / 50 pts (50%)</strong>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: '#94a3b8' }}>Asset Corridor Weight (Trunk Mainline):</span>
-                  <strong style={{ color: '#60a5fa' }}>{explainTask.details.assetImpactScore} / 20 pts (20%)</strong>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                  <span style={{ color: '#94a3b8' }}>Due-Time Pressure (Deadline Proximity):</span>
-                  <strong style={{ color: '#a78bfa' }}>{explainTask.details.duePressureScore} / 10 pts (10%)</strong>
+                  <span style={{ color: '#94a3b8' }}>CP-SAT Lateness Penalty Weight:</span>
+                  <strong style={{ color: '#a78bfa' }}>{Math.round(explainTask.task.criticality * 15)} pts/hr delay</strong>
                 </div>
               </div>
             </div>

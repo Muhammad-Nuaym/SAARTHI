@@ -85,6 +85,13 @@ export interface OptimizationResponse {
   optimized: {
     blocks: ScheduleBlock[];
     metrics: Metrics;
+    solver_stats?: {
+      status: string;
+      runtime_seconds: number;
+      objective_value: number;
+      num_variables: number;
+      num_constraints: number;
+    };
   };
   delta: {
     block_hours_saved: number;

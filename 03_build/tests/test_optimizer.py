@@ -34,7 +34,7 @@ def test_optimizer_on_weekly_scenarios(scenario_file):
 
     # Run CP-SAT optimizer
     optimizer = RailwayBlockOptimizer(bundle)
-    blocks, metrics = optimizer.solve(time_limit_seconds=5.0)
+    blocks, metrics, solver_stats = optimizer.solve(time_limit_seconds=5.0)
 
     assert len(blocks) > 0, f"Expected non-empty schedule for {scenario_file}"
     # 1. Zero train conflicts in CP-SAT
@@ -63,7 +63,7 @@ def test_monthly_plan_generation_same_schema():
     assert len(bundle_monthly.windows) > 200
 
     optimizer = RailwayBlockOptimizer(bundle_monthly)
-    blocks, metrics = optimizer.solve(time_limit_seconds=10.0)
+    blocks, metrics, solver_stats = optimizer.solve(time_limit_seconds=10.0)
 
     assert len(blocks) > 0
     assert metrics["train_conflict_count"] == 0

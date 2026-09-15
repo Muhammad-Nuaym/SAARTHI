@@ -51,8 +51,34 @@ export const OptimizedStateView: React.FC<OptimizedStateViewProps> = ({ data }) 
           </p>
         </div>
 
-        {/* Delta Badges */}
-        <div style={{ display: 'flex', gap: '10px' }}>
+        {/* Metrics & Solver Stats */}
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+          {/* CP-SAT Solver Trace */}
+          {data.optimized.solver_stats && (
+            <div style={{ backgroundColor: '#1e293b', border: '1px solid #334155', borderRadius: 8, padding: '8px 14px', display: 'flex', gap: '16px' }}>
+              <div>
+                <div style={{ fontSize: '0.65rem', color: '#94a3b8', textTransform: 'uppercase' }}>Solver Trace</div>
+                <div style={{ fontSize: '0.8rem', color: '#f8fafc', fontWeight: 600 }}>Google CP-SAT</div>
+              </div>
+              <div style={{ borderLeft: '1px solid #334155', paddingLeft: '16px' }}>
+                <div style={{ fontSize: '0.65rem', color: '#94a3b8', textTransform: 'uppercase' }}>Status</div>
+                <div style={{ fontSize: '0.8rem', color: data.optimized.solver_stats.status === 'OPTIMAL' ? '#10b981' : '#fbbf24', fontWeight: 600 }}>
+                  {data.optimized.solver_stats.status}
+                </div>
+              </div>
+              <div style={{ borderLeft: '1px solid #334155', paddingLeft: '16px' }}>
+                <div style={{ fontSize: '0.65rem', color: '#94a3b8', textTransform: 'uppercase' }}>Runtime</div>
+                <div style={{ fontSize: '0.8rem', color: '#e2e8f0', fontWeight: 600 }}>{data.optimized.solver_stats.runtime_seconds.toFixed(2)}s</div>
+              </div>
+              <div style={{ borderLeft: '1px solid #334155', paddingLeft: '16px' }}>
+                <div style={{ fontSize: '0.65rem', color: '#94a3b8', textTransform: 'uppercase' }}>Obj Value</div>
+                <div style={{ fontSize: '0.8rem', color: '#e2e8f0', fontWeight: 600 }}>{data.optimized.solver_stats.objective_value.toLocaleString()}</div>
+              </div>
+            </div>
+          )}
+
+          {/* Delta Badges */}
+          <div style={{ display: 'flex', gap: '10px' }}>
           <div style={{ backgroundColor: '#10b98115', border: '1px solid #10b98140', borderRadius: 8, padding: '8px 14px', textAlign: 'right' }}>
             <div style={{ fontSize: '0.7rem', color: '#6ee7b7' }}>Possession Hours Saved</div>
             <div style={{ fontSize: '1.2rem', fontWeight: 700, color: '#10b981' }}>
@@ -64,6 +90,7 @@ export const OptimizedStateView: React.FC<OptimizedStateViewProps> = ({ data }) 
             <div style={{ fontSize: '1.2rem', fontWeight: 700, color: '#a855f7' }}>
               {data.delta.integrated_blocks_count}
             </div>
+          </div>
           </div>
         </div>
       </div>
@@ -82,28 +109,34 @@ export const OptimizedStateView: React.FC<OptimizedStateViewProps> = ({ data }) 
         gap: '14px'
       }}>
         {/* Pipeline Steps */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '0.78rem' }}>
-          <span style={{ fontWeight: 700, color: '#94a3b8' }}>WORKFLOW:</span>
-          <span style={{ color: '#38bdf8', fontWeight: 600 }}>1. AI Generated Plan</span>
-          <span style={{ color: '#64748b' }}>➔</span>
-          <span style={{ color: reviewStatus === 'UNDER_REVIEW' ? '#fbbf24' : '#94a3b8', fontWeight: 600 }}>
-            2. Review Plan
-          </span>
-          <span style={{ color: '#64748b' }}>➔</span>
-          <span style={{ color: reviewStatus === 'APPROVED' ? '#34d399' : '#94a3b8', fontWeight: 600 }}>
-            3. Approve / Modify
-          </span>
-          <span style={{ color: '#64748b' }}>➔</span>
-          <span style={{
-            backgroundColor: reviewStatus === 'APPROVED' ? 'rgba(16, 185, 129, 0.2)' : 'rgba(51, 65, 85, 0.5)',
-            color: reviewStatus === 'APPROVED' ? '#34d399' : '#cbd5e1',
-            padding: '2px 8px',
-            borderRadius: 4,
-            fontWeight: 700,
-            border: `1px solid ${reviewStatus === 'APPROVED' ? '#10b98150' : '#475569'}`
-          }}>
-            {reviewStatus === 'APPROVED' ? 'FINAL PLAN ISSUED TO SECTION CONTROLLER' : 'PENDING OPERATOR SIGN-OFF'}
-          </span>
+        <div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: '#38bdf8' }}>
+            <CheckCircle2 size={16} />
+            <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>Optimization Complete</span>
+          </div>
+          <span style={{ color: '#334155' }}>→</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, color: reviewStatus === 'APPROVED' ? '#10b981' : (reviewStatus === 'MODIFIED' ? '#fbbf24' : '#fbbf24') }}>
+            <ShieldCheck size={16} />
+            <span style={{
+              fontSize: '0.72rem',
+              backgroundColor: reviewStatus === 'APPROVED' ? '#10b98120' : (reviewStatus === 'MODIFIED' ? '#fbbf2420' : '#334155'),
+              color: reviewStatus === 'APPROVED' ? '#10b981' : (reviewStatus === 'MODIFIED' ? '#fbbf24' : '#cbd5e1'),
+              padding: '4px 10px',
+              borderRadius: 4,
+              fontWeight: 700,
+              border: `1px solid ${reviewStatus === 'APPROVED' ? '#10b98150' : (reviewStatus === 'MODIFIED' ? '#fbbf2450' : '#475569')}`
+            }}>
+              {reviewStatus === 'APPROVED' ? 'APPROVED' : (reviewStatus === 'MODIFIED' ? 'MODIFIED — REQUIRES RE-APPROVAL' : 'PENDING OPERATOR SIGN-OFF')}
+            </span>
+          </div>
+          {reviewStatus === 'APPROVED' && (
+             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginLeft: '12px', fontSize: '0.7rem', color: '#94a3b8' }}>
+               <span style={{ borderLeft: '1px solid #334155', paddingLeft: '12px' }}>ID: <strong>PLN-{data.scenario_id.toUpperCase()}-V1</strong></span>
+               <span>Time: <strong>{new Date().toLocaleTimeString()}</strong></span>
+             </div>
+          )}
+        </div>
         </div>
 
         {/* Action Buttons */}
@@ -569,11 +602,11 @@ export const OptimizedStateView: React.FC<OptimizedStateViewProps> = ({ data }) 
 
               {/* Monthly Summary Strip */}
               <div style={{ backgroundColor: '#0f172a', borderRadius: 8, padding: '14px 18px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px', fontSize: '0.78rem' }}>
-                <div><span style={{ color: '#64748b' }}>Total Monthly Tasks:</span> <strong style={{ color: '#f8fafc' }}>95 tasks</strong></div>
-                <div><span style={{ color: '#64748b' }}>Integrated Blocks:</span> <strong style={{ color: '#a855f7' }}>27 blocks</strong></div>
-                <div><span style={{ color: '#64748b' }}>Net Downtime Saved:</span> <strong style={{ color: '#34d399' }}>54.0 hours</strong></div>
-                <div><span style={{ color: '#64748b' }}>Train Conflicts:</span> <strong style={{ color: '#38bdf8' }}>0 simulated</strong></div>
-                <div><span style={{ color: '#64748b' }}>Avg Corridor Availability:</span> <strong style={{ color: '#38bdf8' }}>89.05%</strong></div>
+                <div><span style={{ color: '#64748b' }}>Total Tasks:</span> <strong style={{ color: '#f8fafc' }}>{data.optimized.metrics.total_tasks_count} tasks</strong></div>
+                <div><span style={{ color: '#64748b' }}>Integrated Blocks:</span> <strong style={{ color: '#a855f7' }}>{data.delta.integrated_blocks_count} blocks</strong></div>
+                <div><span style={{ color: '#64748b' }}>Net Downtime Saved:</span> <strong style={{ color: '#34d399' }}>{data.delta.block_hours_saved} hours</strong></div>
+                <div><span style={{ color: '#64748b' }}>Train Conflicts:</span> <strong style={{ color: data.optimized.metrics.train_conflict_count === 0 ? '#38bdf8' : '#ef4444' }}>{data.optimized.metrics.train_conflict_count} simulated</strong></div>
+                <div><span style={{ color: '#64748b' }}>Avg Corridor Availability:</span> <strong style={{ color: '#38bdf8' }}>{data.optimized.metrics.availability_proxy_pct}%</strong></div>
               </div>
             </div>
           ) : (

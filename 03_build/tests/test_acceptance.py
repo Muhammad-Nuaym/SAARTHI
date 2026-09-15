@@ -58,7 +58,7 @@ def test_acceptance_1_three_departments_coexist(gold_bundle, conflict_bundle):
 def test_acceptance_2_tasks_inside_allowed_windows(gold_bundle):
     """Criterion 2: A task cannot be scheduled outside an allowed maintenance window."""
     optimizer = RailwayBlockOptimizer(gold_bundle)
-    blocks, _ = optimizer.solve()
+    blocks, _, _stats = optimizer.solve()
     assert len(blocks) > 0
     for b in blocks:
         sec_windows = [w for w in gold_bundle.windows if w.section_id == b.section_id]
@@ -69,7 +69,7 @@ def test_acceptance_2_tasks_inside_allowed_windows(gold_bundle):
 def test_acceptance_3_hard_train_conflicts_rejected(gold_bundle):
     """Criterion 3: A hard train conflict is rejected by the scheduler (0 in CP-SAT)."""
     optimizer = RailwayBlockOptimizer(gold_bundle)
-    blocks, metrics = optimizer.solve()
+    blocks, metrics, _stats = optimizer.solve()
     assert metrics["train_conflict_count"] == 0
     for b in blocks:
         for t in gold_bundle.trains:
@@ -81,7 +81,7 @@ def test_acceptance_3_hard_train_conflicts_rejected(gold_bundle):
 def test_acceptance_4_integrated_compatible_tasks_share_block(gold_bundle):
     """Criterion 4: Integrated compatible tasks can share a block."""
     optimizer = RailwayBlockOptimizer(gold_bundle)
-    blocks, metrics = optimizer.solve()
+    blocks, metrics, _stats = optimizer.solve()
     integrated_blocks = [b for b in blocks if b.status == BlockStatus.INTEGRATED]
     assert len(integrated_blocks) >= 1
     int_b = integrated_blocks[0]
@@ -93,7 +93,7 @@ def test_acceptance_4_integrated_compatible_tasks_share_block(gold_bundle):
 def test_acceptance_5_critical_urgent_tasks_win_priority(gold_bundle):
     """Criterion 5: Critical/urgent tasks receive higher priority than routine tasks when constraints permit."""
     optimizer = RailwayBlockOptimizer(gold_bundle)
-    blocks, metrics = optimizer.solve()
+    blocks, metrics, _stats = optimizer.solve()
     # TSK-ST-01 is urgent (due hour 10). It must finish <= 10.
     st_block = next(b for b in blocks if "TSK-ST-01" in b.tasks)
     assert st_block.end <= 10
@@ -114,7 +114,7 @@ def test_acceptance_6_weekly_and_monthly_from_same_schema():
 def test_acceptance_7_traceable_kpis_no_magic_numbers(gold_bundle):
     """Criterion 7: Every KPI shown on screen can be traced to raw data and a calculation formula."""
     optimizer = RailwayBlockOptimizer(gold_bundle)
-    blocks, metrics = optimizer.solve()
+    blocks, metrics, _stats = optimizer.solve()
 
     # Verify each formula explicitly
     expected_hours = sum(b.end - b.start for b in blocks)
