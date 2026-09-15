@@ -10,7 +10,7 @@ import { fetchScenarios, runOptimization } from './api';
 import { OptimizationResponse, ScenarioSummary } from './types';
 
 export const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<string>('current');
+  const [activeTab, setActiveTab] = useState<string>('network');
   const [selectedScenario, setSelectedScenario] = useState<string>('gold_standard');
   const [selectedHorizon, setSelectedHorizon] = useState<string>('weekly');
   const [scenarios, setScenarios] = useState<ScenarioSummary[]>([]);
